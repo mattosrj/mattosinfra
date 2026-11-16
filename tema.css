@@ -1,0 +1,341 @@
+/* Mattos Infra & Tecnologia — Tema azul e seletor de aparência
+   Carregar DEPOIS do styles.css original.
+   Este complemento preserva a estrutura HTML e o estilo principal. */
+
+:root {
+  --mi-navy: #0d2138;
+  --mi-cyan: #63d2f4;
+}
+
+/* Se o JavaScript ainda não carregou, respeitar o tema do sistema. */
+html:not([data-theme]) {
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  html:not([data-theme]) { color-scheme: dark; }
+}
+
+/* Paleta azul-escuro: azul permanece presente em TODAS as seções. */
+html[data-theme="dark"] {
+  color-scheme: dark;
+  --mi-page: #0b1c30;
+  --mi-section-a: #0f253e;
+  --mi-section-b: #142d49;
+  --mi-panel: #193653;
+  --mi-border: #31516d;
+  --mi-text: #f4f8fe;
+  --mi-muted: #c2d5e8;
+  --mi-link: #76d8f6;
+  --mi-field: #102942;
+}
+
+/* Tema claro: azul visível e suave em todas as faixas; cartões brancos para contraste. */
+html[data-theme="light"] {
+  color-scheme: light;
+  --mi-page: #dfeefa;
+  --mi-section-a: #d7eafa;
+  --mi-section-b: #cbe2f5;
+  --mi-panel: #ffffff;
+  --mi-border: #c7d9e9;
+  --mi-text: #152f4b;
+  --mi-muted: #47617b;
+  --mi-link: #09678e;
+  --mi-field: #f6fafe;
+}
+
+html[data-theme] body {
+  background: var(--mi-page) !important;
+  color: var(--mi-text);
+  transition: background-color .2s ease, color .2s ease;
+}
+
+/* Faixas alternadas mantêm a leitura e evitam fundo monótono. */
+html[data-theme] :is(.services-section, .plans-section, .faq-section) {
+  background: var(--mi-section-a) !important;
+  color: var(--mi-text);
+}
+html[data-theme] :is(.process-section, .about-section, .trust-band) {
+  background: var(--mi-section-b) !important;
+  color: var(--mi-text);
+}
+html[data-theme] :is(.site-footer) {
+  background: var(--mi-section-a) !important;
+  color: var(--mi-muted);
+}
+/* A abertura e o contato continuam em azul-marinho em ambos os temas. */
+html[data-theme] :is(.hero, .contact-section) {
+  background-color: var(--mi-navy) !important;
+}
+html[data-theme="dark"] .hero,
+html[data-theme="dark"] .contact-section {
+  background-color: #0a1d33 !important;
+}
+
+html[data-theme] :is(.services-section, .process-section, .plans-section, .about-section, .faq-section)
+:is(h1, h2, h3, h4, strong, summary, label) {
+  color: var(--mi-text) !important;
+}
+html[data-theme] :is(.services-section, .process-section, .plans-section, .about-section, .faq-section)
+:is(p, small, li) {
+  color: var(--mi-muted) !important;
+}
+html[data-theme] :is(.services-section, .process-section, .plans-section, .about-section, .faq-section)
+a:not(.button) {
+  color: var(--mi-link) !important;
+}
+html[data-theme] :is(.section-kicker, .section-heading em, .center-heading em,
+ .about-copy em, .faq-grid em, .process-grid em) {
+  color: var(--mi-link) !important;
+}
+html[data-theme] :is(.service-card, .plan-card, .step, .faq-list details) {
+  background: var(--mi-panel) !important;
+  color: var(--mi-text) !important;
+  border-color: var(--mi-border) !important;
+}
+html[data-theme] :is(.service-card, .plan-card, .step, .faq-list details)
+:is(h3, h4, strong, summary) { color: var(--mi-text) !important; }
+html[data-theme] :is(.service-card, .plan-card, .step, .faq-list details)
+:is(p, li, small) { color: var(--mi-muted) !important; }
+html[data-theme] .plan-featured {
+  box-shadow: 0 15px 40px rgb(4 15 30 / 13%);
+}
+html[data-theme] .card-icon {
+  background: color-mix(in srgb, var(--mi-link) 12%, var(--mi-panel)) !important;
+  color: var(--mi-link) !important;
+}
+
+/* Formulário: usa painel claro no tema claro e painel escuro no tema escuro. */
+html[data-theme] :is(.contact-form-wrap, .contact-form) {
+  background: var(--mi-panel) !important;
+  color: var(--mi-text) !important;
+  border-color: var(--mi-border) !important;
+}
+html[data-theme] .contact-form :is(h3, label, p) { color: var(--mi-text) !important; }
+html[data-theme] .contact-form :is(.form-privacy, .form-feedback) { color: var(--mi-muted) !important; }
+html[data-theme] .contact-form :is(input, select, textarea) {
+  background: var(--mi-field) !important;
+  border-color: var(--mi-border) !important;
+  color: var(--mi-text) !important;
+}
+html[data-theme] .contact-form :is(input, textarea)::placeholder {
+  color: var(--mi-muted) !important;
+  opacity: .86;
+}
+html[data-theme] .contact-form :is(input, select, textarea):focus-visible {
+  outline: 2px solid var(--mi-link);
+  outline-offset: 2px;
+}
+html[data-theme] .hero h1 { color: #f5faff !important; }
+html[data-theme] .hero h1 span { color: #74d7f6 !important; }
+html[data-theme] .contact-section .contact-copy :is(h2, h3, p) {
+  color: #f4f9ff !important;
+}
+html[data-theme] .contact-section .contact-copy a:not(.button) {
+  color: #a4e6fa !important;
+}
+html[data-theme] .site-footer :is(a, small) {color: var(--mi-muted) !important;}
+
+/* Seletor no canto superior direito, com apenas sol/lua no botão. */
+.mi-theme-control {
+  position: relative;
+  z-index: 90;
+  flex: 0 0 auto;
+  margin-left: 12px;
+  order: 4;
+  font-family: inherit;
+}
+.site-header .header-inner .main-nav { order: 3; }
+.site-header .header-inner .menu-toggle { order: 5; }
+.mi-theme-trigger {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 42px;
+  height: 42px;
+  padding: 0;
+  border: 1px solid rgb(165 204 232 / 33%);
+  border-radius: 13px;
+  background: rgb(255 255 255 / 7%);
+  color: #e7f5ff;
+  cursor: pointer;
+  line-height: 1;
+  transition: background .15s ease, border-color .15s ease;
+}
+.mi-theme-trigger:hover,
+.mi-theme-trigger[aria-expanded="true"] {
+  background: rgb(104 183 224 / 20%);
+  border-color: #7ad9ff;
+}
+.mi-theme-trigger svg,
+.mi-theme-option svg { width: 19px; height: 19px; flex-shrink: 0; }
+.mi-theme-popover {
+  position: absolute;
+  top: calc(100% + 10px);
+  right: 0;
+  min-width: 172px;
+  padding: 7px;
+  background: #f5faff;
+  border: 1px solid #c8daea;
+  border-radius: 14px;
+  box-shadow: 0 18px 46px rgb(0 10 22 / 25%);
+  color: #163552;
+}
+.mi-theme-popover[hidden] { display: none !important; }
+.mi-theme-option {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  padding: 10px 12px;
+  border: 0;
+  background: transparent;
+  color: #163552;
+  text-align: left;
+  border-radius: 9px;
+  font: 600 14px/1.3 inherit;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+.mi-theme-option:hover, .mi-theme-option:focus-visible { background: #e6f0fa; }
+.mi-theme-option[aria-pressed="true"] { background: #dceff9; color: #0a527a; }
+.mi-theme-option[aria-pressed="true"]::after {
+  content: '✓'; font-weight: 800; margin-left: auto;
+}
+.mi-theme-trigger:focus-visible,
+.mi-theme-option:focus-visible { outline: 3px solid #71cef4; outline-offset: 3px; }
+@media (max-width: 760px) {
+  .mi-theme-control { margin-left: auto; margin-right: 4px; }
+  .mi-theme-trigger { width: 40px; height: 40px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html[data-theme] body, .mi-theme-trigger { transition: none; }
+}
+
+
+/* CORREÇÃO V3 — abrange também o HTML real quando a seção tem classes diferentes.
+   tema.js identifica a área 'O QUE FAZEMOS' e acrescenta mi-services-area.
+   O seletor por id funciona mesmo antes de a detecção terminar. */
+html[data-theme="light"] :is(#servicos, #o-que-fazemos, .mi-services-area) {
+  background-color: #cde3f6 !important;
+  background-image: none !important;
+  color: #19334e !important;
+}
+html[data-theme="dark"] :is(#servicos, #o-que-fazemos, .mi-services-area) {
+  background-color: #102942 !important;
+  background-image: none !important;
+  color: #f0f7ff !important;
+}
+/* Se o conteúdo usa pseudo-elementos de fundo, eles não devem cobrir o azul. */
+html[data-theme] .mi-services-area::before,
+html[data-theme] .mi-services-area::after {
+  background-color: transparent !important;
+}
+html[data-theme="light"] .mi-services-area :is(.mi-services-title, .mi-services-title *) {
+  color: #18334e !important;
+  -webkit-text-fill-color: #18334e !important;
+}
+html[data-theme="dark"] .mi-services-area :is(.mi-services-title, .mi-services-title *) {
+  color: #f4f9ff !important;
+  -webkit-text-fill-color: #f4f9ff !important;
+}
+html[data-theme="light"] .mi-services-area :is(.mi-services-title em, .mi-services-title strong, .mi-services-kicker) {
+  color: #06719c !important;
+  -webkit-text-fill-color: #06719c !important;
+}
+html[data-theme="dark"] .mi-services-area :is(.mi-services-title em, .mi-services-title strong, .mi-services-kicker) {
+  color: #69dbf9 !important;
+  -webkit-text-fill-color: #69dbf9 !important;
+}
+html[data-theme="light"] .mi-services-area .mi-services-intro {
+  color: #37546f !important;
+}
+html[data-theme="dark"] .mi-services-area .mi-services-intro {
+  color: #c1d9ea !important;
+}
+
+
+/* V4 - Ajuste dos cartões reais, sem afetar o restante da página.
+ * Em ambos os modos, os cartões de "Como funciona" ganham espaçamento interno.
+ * A seção "Formas de atendimento" recebe cartões e títulos com contraste coerente.
+ */
+html[data-theme] .mi-process-area .mi-process-card {
+  box-sizing: border-box !important;
+  min-width: 0 !important;
+  padding: 24px !important;
+  border-radius: 14px !important;
+  overflow: visible !important;
+  background: var(--mi-panel) !important;
+  border: 1px solid var(--mi-border) !important;
+  color: var(--mi-text) !important;
+  text-align: left !important;
+}
+html[data-theme] .mi-process-area .mi-process-card :is(h3,h4,strong,b) {
+  color: var(--mi-text) !important;
+  -webkit-text-fill-color: var(--mi-text) !important;
+  margin-left: 0 !important;
+  text-align: left !important;
+}
+html[data-theme] .mi-process-area .mi-process-card :is(p,small,li) {
+  color: var(--mi-muted) !important;
+  -webkit-text-fill-color: var(--mi-muted) !important;
+  margin-left: 0 !important;
+  text-align: left !important;
+}
+html[data-theme] .mi-process-area .mi-process-card * { box-sizing: border-box; }
+html[data-theme] .mi-attendance-area .mi-attendance-card {
+  box-sizing: border-box !important;
+  min-width: 0 !important;
+  padding: 26px !important;
+  border: 1px solid var(--mi-border) !important;
+  border-radius: 16px !important;
+  background: var(--mi-panel) !important;
+  color: var(--mi-text) !important;
+  text-align: left !important;
+}
+html[data-theme] .mi-attendance-area .mi-attendance-card :is(h3,h4,strong,b) {
+  color: var(--mi-text) !important;
+  -webkit-text-fill-color: var(--mi-text) !important;
+  opacity: 1 !important;
+  text-shadow: none !important;
+}
+html[data-theme] .mi-attendance-area .mi-attendance-card :is(p,small,li) {
+  color: var(--mi-muted) !important;
+  -webkit-text-fill-color: var(--mi-muted) !important;
+  opacity: 1 !important;
+}
+html[data-theme="dark"] .mi-attendance-area .mi-attendance-card,
+html[data-theme="dark"] .mi-process-area .mi-process-card {
+  background: #1c3b59 !important;
+  border-color: #3c5b77 !important;
+}
+html[data-theme="dark"] .mi-attendance-area .mi-attendance-card :is(h3,h4,strong,b),
+html[data-theme="dark"] .mi-process-area .mi-process-card :is(h3,h4,strong,b) {
+  color: #f8fbff !important;
+  -webkit-text-fill-color: #f8fbff !important;
+}
+html[data-theme="dark"] .mi-attendance-area .mi-attendance-card :is(p,small,li),
+html[data-theme="dark"] .mi-process-area .mi-process-card :is(p,small,li) {
+  color: #d4e3f2 !important;
+  -webkit-text-fill-color: #d4e3f2 !important;
+}
+html[data-theme="light"] .mi-attendance-area .mi-attendance-card,
+html[data-theme="light"] .mi-process-area .mi-process-card {
+  background: #f9fcff !important;
+  border-color: #a7c8de !important;
+}
+html[data-theme="light"] .mi-attendance-area .mi-attendance-card :is(h3,h4,strong,b),
+html[data-theme="light"] .mi-process-area .mi-process-card :is(h3,h4,strong,b) {
+  color: #15344f !important;
+  -webkit-text-fill-color: #15344f !important;
+}
+html[data-theme="light"] .mi-attendance-area .mi-attendance-card :is(p,small,li),
+html[data-theme="light"] .mi-process-area .mi-process-card :is(p,small,li) {
+  color: #375570 !important;
+  -webkit-text-fill-color: #375570 !important;
+}
+/* Não aumentar os cartões além da largura disponível em telas pequenas. */
+@media (max-width: 680px) {
+  html[data-theme] .mi-process-area .mi-process-card,
+  html[data-theme] .mi-attendance-area .mi-attendance-card { padding: 20px !important; }
+}
