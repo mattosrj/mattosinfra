@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 270" role="img" aria-label="M Mattos Infra e Tecnologia">
+
+<defs>
+<linearGradient id="silver" x1="0" x2="1" y1="0" y2="1"><stop offset="0" stop-color="#ffffff"/><stop offset=".30" stop-color="#d4e2ec"/><stop offset=".55" stop-color="#6a829b"/><stop offset=".73" stop-color="#effbff"/><stop offset="1" stop-color="#7997b0"/></linearGradient>
+<linearGradient id="cyanGrad" x1="0" x2="1" y1="1" y2="0"><stop stop-color="#047caa"/><stop offset=".4" stop-color="#1de8fd"/><stop offset="1" stop-color="#0085dc"/></linearGradient>
+<filter id="markGlow" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="3.5" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+</defs>
+
+<path d="M35 170C42 225 101 250 163 228C104 264 40 247 20 199C9 172 13 135 31 111C22 138 23 156 35 170Z" fill="url(#cyanGrad)" opacity=".94"/>
+<path d="M25 169C35 210 72 231 119 234" fill="none" stroke="#42dffd" stroke-width="2" opacity=".7"/>
+<path d="M39 189V67L92 132L132 79L157 108L202 48V209L173 220V119L131 169L92 169L70 143V201Z" fill="url(#silver)" stroke="#e2f9ff" stroke-width="1.4"/>
+<path d="M43 81L92 143L132 91L155 120" fill="none" stroke="#ffffff" stroke-width="3" opacity=".55"/>
+<path d="M173 215V119L202 70" fill="none" stroke="#456377" stroke-width="2.5" opacity=".6"/>
+<g fill="none" stroke="url(#cyanGrad)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round">
+<path d="M124 156L175 101V58L201 35V18"/><path d="M141 151L191 101V68L217 44V15"/><path d="M155 145L207 94V57L231 33V7"/>
+</g>
+<g fill="#31eeff" stroke="#8afbff" stroke-width="1.8" filter="url(#markGlow)">
+<circle cx="201" cy="17" r="5"/><circle cx="217" cy="14" r="5"/><circle cx="231" cy="7" r="5"/><circle cx="175" cy="57" r="4"/><circle cx="207" cy="57" r="4"/>
+</g>
+</svg>

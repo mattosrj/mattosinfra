@@ -1,46 +1,62 @@
-/* Identidade B — usa o M exato da assinatura, sem o fundo de banner. */
+/* Identidade visual aprovada: um único símbolo vetorial, sem imagem com fundo. */
 .brand-symbol {
-  --symbol-width: 124px;
+  --symbol-width: 72px;
   display: block;
   flex: none;
   width: var(--symbol-width);
-  aspect-ratio: 380 / 310;
-  background-image: url("assets/assinatura-logo-b.png");
-  background-repeat: no-repeat;
-  background-position: left center;
-  background-size: calc(var(--symbol-width) * 2.8632) auto;
-  mix-blend-mode: screen;
-  filter: drop-shadow(0 0 10px rgba(0, 201, 243, .16));
+  aspect-ratio: 260 / 270;
+  background: url("assets/mattos-marca-aprovada.svg?v=3") center / contain no-repeat;
+  filter: drop-shadow(0 0 10px rgba(0,201,243,.15));
 }
-.art-center .brand-symbol--hero { --symbol-width: 112px; }
-.art-center { gap: 8px; }
-.art-center span:not(.brand-symbol) { text-align: center; }
-.about-visual .brand-symbol--about {
-  --symbol-width: 116px;
-  position: absolute;
-  top: 25px;
-  right: 25px;
+.brand--header .brand-symbol--header { --symbol-width: 55px; }
+.brand--header .brand-text strong { font-size: 1.34rem; letter-spacing: .13em; color: #f3f7fc; }
+.brand--header .brand-text small { font-size: .63rem; letter-spacing: .115em; color: #41dcf2; }
+.art-center {
+  width: 226px;
+  height: 226px;
+  gap: 3px;
+  background: none;
+  border: 0;
+  box-shadow: none;
+}
+.art-center .brand-symbol--hero { --symbol-width: 149px; }
+.art-center span:not(.brand-symbol) {
+  text-align: center;
+  position: relative;
+  z-index: 2;
+  text-shadow: 0 2px 10px rgba(5, 22, 40, .9);
+}
+.about-visual::before {
+  right: auto;
   bottom: auto;
+  left: 50%;
+  top: 42%;
+  transform: translate(-50%, -50%);
+}
+.about-visual-label { position: relative; z-index: 2; align-self: flex-start; }
+.about-visual .brand-symbol--about {
+  --symbol-width: 191px;
+  position: absolute;
+  left: 50%;
+  top: 43%;
+  right: auto;
+  bottom: auto;
+  transform: translate(-50%, -50%);
   z-index: 1;
-  opacity: .98;
 }
 .about-visual-title {
   position: relative;
   z-index: 2;
+  align-self: center;
+  text-align: center;
   max-width: 100%;
-  padding-right: 5px;
-  margin-bottom: 34px;
+  font-size: clamp(1.8rem, 3vw, 2.55rem);
+  margin-top: auto;
+  margin-bottom: 0;
 }
-.about-visual .visual-lines {
-  z-index: 1;
-  bottom: 21px;
-  opacity: .55;
-}
-.footer-brand {
-  gap: 13px;
-  align-items: center;
-}
-.footer-brand .brand-symbol--footer { --symbol-width: 69px; }
+.about-visual .visual-lines { z-index: 0; opacity: .22; }
+.footer-brand { align-items: center; gap: 13px; }
+.footer-brand .brand-symbol--footer { --symbol-width: 68px; }
 .footer-brand .brand-text strong {
   font-size: 1.5rem;
   letter-spacing: .08em;
@@ -52,14 +68,27 @@
   letter-spacing: .09em;
   color: #27d9f6;
 }
+html[data-theme="light"] .footer-brand .brand-text strong { color: #183650; }
+html[data-theme="light"] .footer-brand .brand-text small { color: #096d8f; }
 @media (max-width: 800px) {
-  .art-center .brand-symbol--hero { --symbol-width: 90px; }
-  .about-visual .brand-symbol--about { --symbol-width: 100px; top: 20px; right: 20px; }
+  .brand--header .brand-symbol--header { --symbol-width: 48px; }
+  .brand--header .brand-text strong { font-size: 1.12rem; }
+  .brand--header .brand-text small { font-size: .54rem; }
+  .art-center { width: 186px; height: 186px; }
+  .art-center .brand-symbol--hero { --symbol-width: 122px; }
+  .about-visual .brand-symbol--about { --symbol-width: 135px; top: 41%; }
+  .about-visual-title { font-size: clamp(1.7rem, 5vw, 2rem); }
 }
 @media (max-width: 510px) {
-  .about-visual-title { font-size: clamp(1.75rem, 8vw, 2rem); margin-bottom: 42px; }
-  .about-visual .brand-symbol--about { --symbol-width: 82px; right: 18px; top: 18px; }
-  .footer-brand .brand-symbol--footer { --symbol-width: 60px; }
+  .brand--header .brand-symbol--header { --symbol-width: 42px; }
+  .brand--header .brand-text strong { font-size: 1.03rem; }
+  .brand--header .brand-text small { font-size: .51rem; letter-spacing: .06em; }
+  .art-center { width: 169px; height: 169px; }
+  .art-center .brand-symbol--hero { --symbol-width: 104px; }
+  .art-center span:not(.brand-symbol) { font-size: .54rem; }
+  .about-visual .brand-symbol--about { --symbol-width: 112px; top: 41%; }
+  .about-visual-title { font-size: clamp(1.6rem, 7vw, 1.85rem); }
+  .footer-brand .brand-symbol--footer { --symbol-width: 61px; }
   .footer-brand .brand-text strong { font-size: 1.3rem; }
-  .footer-brand .brand-text small { font-size: .59rem; }
+  .footer-brand .brand-text small { font-size: .58rem; }
 }
