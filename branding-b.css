@@ -8,7 +8,7 @@
   background: url("assets/mattos-marca-aprovada.svg?v=3") center / contain no-repeat;
   filter: drop-shadow(0 0 10px rgba(0,201,243,.15));
 }
-.brand--header .brand-symbol--header { --symbol-width: 55px; }
+.brand--header .brand-symbol--header { --symbol-width: 63px; }
 .brand--header .brand-text strong { font-size: 1.34rem; letter-spacing: .13em; color: #f3f7fc; }
 .brand--header .brand-text small { font-size: .63rem; letter-spacing: .115em; color: #41dcf2; }
 .art-center {
@@ -27,11 +27,14 @@
   text-shadow: 0 2px 10px rgba(5, 22, 40, .9);
 }
 .about-visual::before {
+  width: 248px;
+  height: 248px;
   right: auto;
   bottom: auto;
   left: 50%;
-  top: 42%;
+  top: 43%;
   transform: translate(-50%, -50%);
+  box-shadow: 0 0 0 24px rgba(89,189,211,.07), 0 0 0 44px rgba(89,189,211,.05);
 }
 .about-visual-label { position: relative; z-index: 2; align-self: flex-start; }
 .about-visual .brand-symbol--about {
@@ -71,16 +74,17 @@
 html[data-theme="light"] .footer-brand .brand-text strong { color: #183650; }
 html[data-theme="light"] .footer-brand .brand-text small { color: #096d8f; }
 @media (max-width: 800px) {
-  .brand--header .brand-symbol--header { --symbol-width: 48px; }
+  .brand--header .brand-symbol--header { --symbol-width: 55px; }
   .brand--header .brand-text strong { font-size: 1.12rem; }
   .brand--header .brand-text small { font-size: .54rem; }
   .art-center { width: 186px; height: 186px; }
   .art-center .brand-symbol--hero { --symbol-width: 122px; }
+  .about-visual::before { width: 192px; height: 192px; box-shadow: 0 0 0 18px rgba(89,189,211,.07), 0 0 0 34px rgba(89,189,211,.05); }
   .about-visual .brand-symbol--about { --symbol-width: 135px; top: 41%; }
   .about-visual-title { font-size: clamp(1.7rem, 5vw, 2rem); }
 }
 @media (max-width: 510px) {
-  .brand--header .brand-symbol--header { --symbol-width: 42px; }
+  .brand--header .brand-symbol--header { --symbol-width: 48px; }
   .brand--header .brand-text strong { font-size: 1.03rem; }
   .brand--header .brand-text small { font-size: .51rem; letter-spacing: .06em; }
   .art-center { width: 169px; height: 169px; }
