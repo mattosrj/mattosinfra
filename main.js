@@ -42,30 +42,71 @@
   const form = document.querySelector("#contact-form");
   const feedback = document.querySelector("#form-feedback");
   if (!form || !feedback) return;
-  form.addEventListener("submit", (event) => {
+  const submitButton = form.querySelector(".submit-button");
+  const normalButtonContent = submitButton ? submitButton.innerHTML : "";
+
+  form.addEventListener("submit", async (event) => {
     event.preventDefault();
     feedback.classList.remove("success");
+    feedback.textContent = "";
+
     if (!form.checkValidity()) {
       form.reportValidity();
       feedback.textContent = "Preencha os campos obrigatórios corretamente.";
       return;
     }
     if (!validEmail) {
-      feedback.textContent = "O envio por e-mail está temporariamente indisponível. Use o WhatsApp para entrar em contato.";
+      feedback.textContent = "O envio está temporariamente indisponível. Entre em contato pelo WhatsApp ou e-mail.";
       return;
     }
+    // Campo de armadilha para bots, mantido invisível para os visitantes.
+    if (form.elements.namedItem("_honey")?.value) return;
 
     const name = form.elements.namedItem("nome").value.trim();
     const reply = form.elements.namedItem("email").value.trim();
     const subject = form.elements.namedItem("assunto").value;
     const message = form.elements.namedItem("mensagem").value.trim();
-    const body = `Olá! Vim pelo site Mattos Infra & Tecnologia.\n\nNome: ${name}\nE-mail: ${reply}\nAssunto: ${subject}\n\nNecessidade:\n${message}`;
-    const url = `mailto:${email}?subject=${encodeURIComponent("Solicitação pelo site — " + subject)}&body=${encodeURIComponent(body)}`;
+    if (!name || !reply || !message) {
+      feedback.textContent = "Preencha os campos obrigatórios corretamente.";
+      return;
+    }
 
-    feedback.textContent = "Abrindo seu aplicativo de e-mail com a mensagem preenchida. Revise e clique em Enviar.";
-    feedback.classList.add("success");
-    // O visitante confirma o envio no próprio aplicativo de e-mail.
-    // Não coletamos nem armazenamos dados no site.
-    window.location.href = url;
+    if (submitButton) {
+      submitButton.disabled = true;
+      submitButton.textContent = "Enviando...";
+    }
+    feedback.textContent = "Enviando sua mensagem...";
+
+    try {
+      const response = await fetch(`https://formsubmit.co/ajax/${encodeURIComponent(email)}`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json", "Accept": "application/json" },
+        body: JSON.stringify({
+          nome: name,
+          email: reply,
+          assunto: subject,
+          mensagem: message,
+          _subject: "Mattos Infra - contato pelo site: " + subject,
+          _template: "table",
+          _url: "https://mattosrj.github.io/mattosinfra/"
+        })
+      });
+      if (!response.ok) throw new Error("Falha no serviço de envio");
+      const data = await response.json();
+      if (String(data.success).toLowerCase() !== "true") {
+        throw new Error("Serviço não confirmou recebimento");
+      }
+
+      feedback.textContent = "Mensagem recebida pelo serviço de contato. Obrigado! Entraremos em contato.";
+      feedback.classList.add("success");
+      form.reset();
+    } catch (_) {
+      feedback.textContent = "Não foi possível enviar a mensagem agora. Tente novamente ou use o WhatsApp ou e-mail ao lado.";
+    } finally {
+      if (submitButton) {
+        submitButton.disabled = false;
+        submitButton.innerHTML = normalButtonContent;
+      }
+    }
   });
 })();
