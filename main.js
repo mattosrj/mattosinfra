@@ -50,8 +50,8 @@
       feedback.textContent = "Preencha os campos obrigatórios corretamente.";
       return;
     }
-    if (!validWhatsApp && !validEmail) {
-      feedback.textContent = "Site em demonstração: configure seu WhatsApp ou e-mail no arquivo config.js antes de publicar.";
+    if (!validEmail) {
+      feedback.textContent = "O envio por e-mail está temporariamente indisponível. Use o WhatsApp para entrar em contato.";
       return;
     }
 
@@ -60,19 +60,12 @@
     const subject = form.elements.namedItem("assunto").value;
     const message = form.elements.namedItem("mensagem").value.trim();
     const body = `Olá! Vim pelo site Mattos Infra & Tecnologia.\n\nNome: ${name}\nE-mail: ${reply}\nAssunto: ${subject}\n\nNecessidade:\n${message}`;
-    const url = validWhatsApp
-      ? `https://wa.me/${whatsapp}?text=${encodeURIComponent(body)}`
-      : `mailto:${email}?subject=${encodeURIComponent("Solicitação pelo site — " + subject)}&body=${encodeURIComponent(body)}`;
+    const url = `mailto:${email}?subject=${encodeURIComponent("Solicitação pelo site — " + subject)}&body=${encodeURIComponent(body)}`;
 
-    feedback.textContent = "Abrindo o aplicativo para você revisar e enviar a mensagem.";
+    feedback.textContent = "Abrindo seu aplicativo de e-mail com a mensagem preenchida. Revise e clique em Enviar.";
     feedback.classList.add("success");
-    // Ao abrir o aplicativo, o próprio visitante confirma o envio.
+    // O visitante confirma o envio no próprio aplicativo de e-mail.
     // Não coletamos nem armazenamos dados no site.
-    if (validWhatsApp) {
-      const opened = window.open(url, "_blank", "noopener,noreferrer");
-      if (!opened) window.location.assign(url);
-    } else {
-      window.location.href = url;
-    }
+    window.location.href = url;
   });
 })();
