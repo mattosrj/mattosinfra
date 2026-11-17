@@ -142,8 +142,12 @@
               <a id="contact-email" class="contact-link" hidden>E-mail: mattosinfra@gmail.com <span aria-hidden="true">↗</span></a>
             </div>
           </div>
-          <form class="contact-form" id="contact-form" novalidate>
+          <form class="contact-form" id="contact-form" action="https://formsubmit.co/mattosinfra@gmail.com" method="POST">
             <div class="form-header"><strong>Solicitar contato</strong><span>Sem compromisso inicial</span></div>
+            <input type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true" style="display:none" />
+            <input type="hidden" name="_subject" value="Novo contato - Mattos Infra &amp; Tecnologia" />
+            <input type="hidden" name="_template" value="table" />
+            <input type="hidden" name="_url" value="https://mattosrj.github.io/mattosinfra/" />
             <label for="contact-name">Nome <span aria-hidden="true">*</span></label>
             <input id="contact-name" name="nome" type="text" autocomplete="name" maxlength="100" required placeholder="Como podemos chamar você?" />
             <label for="contact-reply">Seu e-mail <span aria-hidden="true">*</span></label>
@@ -162,8 +166,8 @@
             </select>
             <label for="contact-message">Como podemos ajudar? <span aria-hidden="true">*</span></label>
             <textarea id="contact-message" name="mensagem" rows="4" maxlength="2000" required placeholder="Descreva brevemente sua necessidade..."></textarea>
-            <button class="button button-primary submit-button" type="submit">Preparar e-mail <span aria-hidden="true">↗</span></button>
-            <p class="form-note">Ao continuar, seu aplicativo de e-mail será aberto com os dados preenchidos. Revise e confirme o envio. Você também pode conversar diretamente pelo WhatsApp.</p>
+            <button class="button button-primary submit-button" type="submit">Enviar mensagem <span aria-hidden="true">↗</span></button>
+            <p class="form-note">Ao enviar, seu nome, e-mail e mensagem serão processados pelo serviço externo FormSubmit e encaminhados para a Mattos Infra, sem abrir seu aplicativo de e-mail. Não informe senhas ou dados sensíveis. Se preferir, use o WhatsApp ou o e-mail ao lado.</p>
             <p class="form-feedback" id="form-feedback" role="status" aria-live="polite"></p>
           </form>
         </div>
