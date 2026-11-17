@@ -1,0 +1,65 @@
+/* Identidade B — usa o M exato da assinatura, sem o fundo de banner. */
+.brand-symbol {
+  --symbol-width: 124px;
+  display: block;
+  flex: none;
+  width: var(--symbol-width);
+  aspect-ratio: 380 / 310;
+  background-image: url("assets/assinatura-logo-b.png");
+  background-repeat: no-repeat;
+  background-position: left center;
+  background-size: calc(var(--symbol-width) * 2.8632) auto;
+  mix-blend-mode: screen;
+  filter: drop-shadow(0 0 10px rgba(0, 201, 243, .16));
+}
+.art-center .brand-symbol--hero { --symbol-width: 112px; }
+.art-center { gap: 8px; }
+.art-center span:not(.brand-symbol) { text-align: center; }
+.about-visual .brand-symbol--about {
+  --symbol-width: 116px;
+  position: absolute;
+  top: 25px;
+  right: 25px;
+  bottom: auto;
+  z-index: 1;
+  opacity: .98;
+}
+.about-visual-title {
+  position: relative;
+  z-index: 2;
+  max-width: 100%;
+  padding-right: 5px;
+  margin-bottom: 34px;
+}
+.about-visual .visual-lines {
+  z-index: 1;
+  bottom: 21px;
+  opacity: .55;
+}
+.footer-brand {
+  gap: 13px;
+  align-items: center;
+}
+.footer-brand .brand-symbol--footer { --symbol-width: 69px; }
+.footer-brand .brand-text strong {
+  font-size: 1.5rem;
+  letter-spacing: .08em;
+  line-height: 1;
+  color: #f3f7fc;
+}
+.footer-brand .brand-text small {
+  font-size: .66rem;
+  letter-spacing: .09em;
+  color: #27d9f6;
+}
+@media (max-width: 800px) {
+  .art-center .brand-symbol--hero { --symbol-width: 90px; }
+  .about-visual .brand-symbol--about { --symbol-width: 100px; top: 20px; right: 20px; }
+}
+@media (max-width: 510px) {
+  .about-visual-title { font-size: clamp(1.75rem, 8vw, 2rem); margin-bottom: 42px; }
+  .about-visual .brand-symbol--about { --symbol-width: 82px; right: 18px; top: 18px; }
+  .footer-brand .brand-symbol--footer { --symbol-width: 60px; }
+  .footer-brand .brand-text strong { font-size: 1.3rem; }
+  .footer-brand .brand-text small { font-size: .59rem; }
+}
